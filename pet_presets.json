@@ -1,0 +1,230 @@
+{"pets":[
+    {
+        "name": "none",
+        "templateId": 1,
+        "huntingZoneId": 1
+    }, 
+	{
+        "name": "default",
+        "templateId": 0,
+        "huntingZoneId": 0
+    }, 
+    {
+        "name": "bunny",
+        "templateId": 1905,
+        "huntingZoneId": 60
+    },      
+    {
+        "name": "dog",
+        "templateId": 1902,
+        "huntingZoneId": 80
+    },    
+    {
+        "name": "goat",
+        "templateId": 1902,
+        "huntingZoneId": 65
+    },      
+    {
+        "name": "pig",
+        "templateId": 1904,
+        "huntingZoneId": 60
+    },        
+    {
+        "name": "pigeon",
+        "templateId": 1909,
+        "huntingZoneId": 63
+    },         
+    {
+        "name": "puppy",
+        "templateId": 1900,
+        "huntingZoneId": 60
+    },       
+    {
+        "name": "rooster",
+        "templateId": 1902,
+        "huntingZoneId": 60
+    },
+	{
+        "name": "sheep",
+        "templateId": 80011000,
+        "huntingZoneId": 1023
+    },
+	{
+        "name": "cat",
+        "templateId": 1023,
+        "huntingZoneId": 80007000
+    },  
+	{
+        "name": "pixie",
+        "templateId": 30024200,
+        "huntingZoneId": 1023,
+		"size": 1.3
+    },
+	{
+        "name": "felicity",
+        "templateId": 80038000,
+        "huntingZoneId": 1023,
+		"size": 1.5
+    },
+	{
+        "name": "miss kitty",
+        "templateId": 30017000,
+        "huntingZoneId": 1023,
+		"size": 2.0
+    },
+	{
+        "name": "juice",
+        "templateId": 64010000,
+        "huntingZoneId": 1023,
+		"size": 1.3
+    },
+	{
+        "name": "candy",
+        "templateId": 80033000,
+        "huntingZoneId": 1023
+    },
+	{
+        "name": "durion",
+        "templateId": 80052000,
+        "huntingZoneId": 1023,
+		"size": 1.15
+    },
+	{
+        "name": "prince",
+        "templateId": 80022000,
+        "huntingZoneId": 1023,
+		"size": 1.3,
+		"move": 5
+    },
+	{
+        "name": "moon bunny",
+        "templateId": 40009601,
+        "huntingZoneId": 1023
+    },
+	{
+        "name": "miss katonic",
+        "templateId": 30125100,
+        "huntingZoneId": 1023
+    },
+	{
+        "name": "hanami",
+        "templateId": 80050000,
+        "huntingZoneId": 1023
+    },
+	{
+        "name": "baldi",
+        "templateId": 80051000,
+        "huntingZoneId": 1023
+    },
+	{
+        "name": "marie",
+        "templateId": 80051000,
+        "huntingZoneId": 1023
+    },
+	{
+        "name": "loo",
+        "templateId": 80053100,
+        "huntingZoneId": 1023
+    },
+	{
+        "name": "kuncun",
+        "templateId": 80054000,
+        "huntingZoneId": 1023
+    },
+	{
+        "name": "cocomin",
+        "templateId": 80055000,
+        "huntingZoneId": 1023
+    },
+	{
+        "name": "mushroom",
+        "templateId": 80046000,
+        "huntingZoneId": 1023,
+		"size": 1.3
+    },
+	{
+        "name": "slime",
+        "templateId": 80047000,
+        "huntingZoneId": 1023,
+		"size": 1.15
+    },
+	{
+        "name": "pooky",
+        "templateId": 1,
+        "huntingZoneId": 1023
+    },
+	{
+        "name": "tuwangi",
+        "templateId": 2,
+        "huntingZoneId": 1023
+    },
+	{
+        "name": "mewy",
+        "templateId": 3,
+        "huntingZoneId": 1023
+    },
+	{
+        "name": "dahlia",
+        "templateId": 4,
+        "huntingZoneId": 1023
+    },
+	{
+        "name": "pumpkin",
+        "templateId": 400,
+        "huntingZoneId": 1023,
+		"size": 0.2
+    },
+	{
+        "name": "mystel",
+        "templateId": 833,
+        "huntingZoneId": 1028,
+		"size": 0.5
+    },
+	{
+        "name": "okami",
+        "templateId": 5000,
+        "huntingZoneId": 444,
+		"size": 0.3
+    },
+	{
+        "name": "lizard",
+        "templateId": 35,
+        "huntingZoneId": 57
+    },  
+	{
+        "name": "kylos",
+        "templateId": 3000,
+        "huntingZoneId": 3019,
+		"size": 0.1
+    },
+	{
+        "name": "lilith",
+        "templateId": 76903,
+        "huntingZoneId": 3016,
+		"size": 0.14
+    },
+	{
+        "name": "bahaar",
+        "templateId": 2000,
+        "huntingZoneId": 444,
+		"size": 0.08
+    },
+	{
+        "name": "bandersnatch",
+        "templateId": 46601,
+        "huntingZoneId": 466,
+		"size": 0.08
+    },
+	{
+        "name": "imperator",
+        "templateId": 2000,
+        "huntingZoneId": 768,
+		"size": 0.12
+    },
+	{
+        "name": "darkan",
+        "templateId": 1000,
+        "huntingZoneId": 716,
+		"size": 0.12
+    }
+]}

@@ -1,0 +1,11 @@
+{
+	"disableAutoUpdate": false,
+	"name": "Pet-Skin-Replacer",
+	"author": "Owyn",
+	"description": "Customize your pet's appearance",
+	"options": {
+		"niceName": "Pet Skin Replacer"
+	},
+	"servers": ["https://raw.githubusercontent.com/Owyn/pet-skin-replacer/master/"],
+	"supportUrl": "https://github.com/Owyn/pet-skin-replacer/issues"
+}
