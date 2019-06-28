@@ -46,7 +46,7 @@ module.exports = function PetReplacer(mod) {
 				hook('C_PLAYER_LOCATION', 5, {order: 9999, filter: {fake: null}}, moveAlongHook);
 				hook('C_START_TARGETED_SKILL', 6, {order: 9999, filter: {fake: null}}, moveAlongHook);
 				hook('S_ACTION_STAGE', 9, {order: 9999, filter: {fake: null}}, moveAlongHook);
-				//hook('S_ACTION_END', 5, {order: 9999, filter: {fake: null}}, moveAlongHook);
+				hook('S_ACTION_END', 5, {order: 9999, filter: {fake: null}}, moveAlongHook);
 				hook('S_INSTANT_DASH', 3, {order: 9999, filter: {fake: null}}, (ev) => {
 					ev.dest = ev.loc;
 					moveAlongHook(ev);
@@ -68,8 +68,6 @@ module.exports = function PetReplacer(mod) {
 	
 	function moveAlongHook(ev)
 	{
-		if(!ev.dest.x) return;
-		
 		if(ev.gameId)
 		{
 			switch(ev.gameId)
@@ -83,6 +81,8 @@ module.exports = function PetReplacer(mod) {
 					return;
 			}
 		}
+		
+		if(!ev.dest || !ev.dest.x) return;
 		
 		let jumpInPlace = false;
 		if(ev.type !== undefined)

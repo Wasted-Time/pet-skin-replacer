@@ -1,7 +1,7 @@
 {
 	"files": {
 		"README.MD": "be8ab0bceb1b99038d9669686961ed5af068dc516c7bb96c9fab6912a93d078d",
-		"index.js": "fb22c9a407058076488b3520c93e210791bc09624689104335378ccf1b8d167b",
+		"index.js": "6d74ef7cc5b4f370e1c4344b451fbff9af1bea196be3f308c7c1b5efaa905f66",
 		"module.json": "cf3cf7ad5a9336883ccb5d3d92dc21c7b05d80c01c32da9db6ef6cf6da991ca5",
 		"pet_presets.json": "f9cb629f990f9d40b53c25add519d656c90c2c28848f262c8c11248ed36cb145"
 	},
@@ -9,6 +9,7 @@
 		"C_PLAYER_LOCATION": 5,
 		"C_START_TARGETED_SKILL": 6,
 		"S_ABNORMALITY_SCALE_UP": 2,
+		"S_ACTION_END": 5,
 		"S_ACTION_STAGE": 9,
 		"S_INSTANT_DASH": 3,
 		"S_LOGIN": 13,
