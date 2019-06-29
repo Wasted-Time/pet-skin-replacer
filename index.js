@@ -76,6 +76,7 @@ module.exports = function PetReplacer(mod) {
 					break;
 				case petId:
 					ev.loc = calc_pos(ev.loc, ev.w, PetActualAngle, settings.stay[1]);
+					ev.w = prevAngle;
 					return true;
 				default:
 					return;
