@@ -176,15 +176,19 @@
     },
 	{
         "name": "mystel",
-        "templateId": 833,
-        "huntingZoneId": 1028,
+        "templateId": 1028,
+        "huntingZoneId": 833,
 		"size": 0.5
     },
 	{
         "name": "okami",
         "templateId": 5000,
         "huntingZoneId": 444,
-		"size": 0.3
+		"size": 0.3,
+		"anim": {"death": "spawn",
+				"skill": "roar",
+				"jump": "spawn",
+				"walk": ["walk",1366]}
     },
 	{
         "name": "lizard",
@@ -201,13 +205,20 @@
         "name": "lilith",
         "templateId": 76903,
         "huntingZoneId": 3016,
-		"size": 0.14
+		"size": 0.15,
+		"anim": {"death": "spawn",
+				"skill": "TemptationAtk_Shot",
+				"jump": "longAtk01_Start"}
     },
 	{
         "name": "bahaar",
         "templateId": 2000,
         "huntingZoneId": 444,
-		"size": 0.08
+		"size": 0.08,
+		"anim": {"spawn": "readyaction_r",
+				"death": "death_r",
+				"skill": "heavyatk01_start",
+				"unarmedwait": "wait_r"}
     },
 	{
         "name": "bandersnatch",

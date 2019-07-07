@@ -1,0 +1,388 @@
+{
+	"String": [
+		{
+			"id": 1,
+			"string": "Candyspinner"
+		},
+		{
+			"id": 2,
+			"string": "Fetch"
+		},
+		{
+			"id": 3,
+			"string": "Dragonette"
+		},
+		{
+			"id": 4,
+			"string": "Ser Picks-a-lot"
+		},
+		{
+			"id": 5,
+			"string": "Rambo"
+		},
+		{
+			"id": 6,
+			"string": "Carnivorous Plant"
+		},
+		{
+			"id": 7,
+			"string": "Prince"
+		},
+		{
+			"id": 8,
+			"string": "Totes"
+		},
+		{
+			"id": 9,
+			"string": "Cheeks"
+		},
+		{
+			"id": 10,
+			"string": "Boo"
+		},
+		{
+			"id": 11,
+			"string": "Ser Picks-a-lot"
+		},
+		{
+			"id": 12,
+			"string": "Peddit"
+		},
+		{
+			"id": 13,
+			"string": "Caddy"
+		},
+		{
+			"id": 14,
+			"string": "Zero"
+		},
+		{
+			"id": 15,
+			"string": "Miss Katonic"
+		},
+		{
+			"id": 16,
+			"string": "Pinkie"
+		},
+		{
+			"id": 17,
+			"string": "Bonzai"
+		},
+		{
+			"id": 18,
+			"string": "Addams"
+		},
+		{
+			"id": 19,
+			"string": "Rusty"
+		},
+		{
+			"id": 20,
+			"string": "Rainie"
+		},
+		{
+			"id": 21,
+			"string": "Nugget"
+		},
+		{
+			"id": 24,
+			"string": "Elisa"
+		},
+		{
+			"id": 25,
+			"string": "Golden Dragonette"
+		},
+		{
+			"id": 27,
+			"string": "Ebon Dragonette"
+		},
+		{
+			"id": 29,
+			"string": "Fyre Dragonette"
+		},
+		{
+			"id": 31,
+			"string": "Jade Dragonette"
+		},
+		{
+			"id": 33,
+			"string": "Silver Dragonette"
+		},
+		{
+			"id": 56,
+			"string": "No EU license"
+		},
+		{
+			"id": 57,
+			"string": "KR only"
+		},
+		{
+			"id": 58,
+			"string": "Dragonette"
+		},
+		{
+			"id": 60,
+			"string": "No EU license"
+		},
+		{
+			"id": 64,
+			"string": "Sakura Spirit"
+		},
+		{
+			"id": 70,
+			"string": "Prince"
+		},
+		{
+			"id": 71,
+			"string": "Willoe"
+		},
+		{
+			"id": 72,
+			"string": "Chef"
+		},
+		{
+			"id": 73,
+			"string": "Miss Kitty"
+		},
+		{
+			"id": 79,
+			"string": "Dakuryon"
+		},
+		{
+			"id": 80,
+			"string": "Magus Imperator Dakuryon"
+		},
+		{
+			"id": 81,
+			"string": "Magus Imperator Dakuryon"
+		},
+		{
+			"id": 82,
+			"string": "Magus Imperator Dakuryon"
+		},
+		{
+			"id": 83,
+			"string": "Magus Imperator Dakuryon"
+		},
+		{
+			"id": 99,
+			"string": "Wooley"
+		},
+		{
+			"id": 600,
+			"string": "Miss Kitty"
+		},
+		{
+			"id": 601,
+			"string": "Willoe"
+		},
+		{
+			"id": 602,
+			"string": "Dundee"
+		},
+		{
+			"id": 603,
+			"string": "Chef"
+		},
+		{
+			"id": 604,
+			"string": "Rocky"
+		},
+		{
+			"id": 605,
+			"string": "Madmartigan"
+		},
+		{
+			"id": 606,
+			"string": "Bam Bam"
+		},
+		{
+			"id": 607,
+			"string": "Bonzai"
+		},
+		{
+			"id": 608,
+			"string": "Addams"
+		},
+		{
+			"id": 609,
+			"string": "Clawd"
+		},
+		{
+			"id": 610,
+			"string": "Juicy"
+		},
+		{
+			"id": 611,
+			"string": "Flaps"
+		},
+		{
+			"id": 620,
+			"string": "Moon Bunny"
+		},
+		{
+			"id": 613,
+			"string": "KR only"
+		},
+		{
+			"id": 700,
+			"string": "Zero"
+		},
+		{
+			"id": 701,
+			"string": "Miss Katonic"
+		},
+		{
+			"id": 702,
+			"string": "Pinkie"
+		},
+		{
+			"id": 703,
+			"string": "Rusty"
+		},
+		{
+			"id": 704,
+			"string": "Rainie"
+		},
+		{
+			"id": 800,
+			"string": "Dragonette"
+		},
+		{
+			"id": 801,
+			"string": "Candyspinner"
+		},
+		{
+			"id": 802,
+			"string": "Addams"
+		},
+		{
+			"id": 803,
+			"string": "Bonzai"
+		},
+		{
+			"id": 804,
+			"string": "Rainie"
+		},
+		{
+			"id": 805,
+			"string": "Rusty"
+		},
+		{
+			"id": 806,
+			"string": "Pinkie"
+		},
+		{
+			"id": 807,
+			"string": "Zero"
+		},
+		{
+			"id": 808,
+			"string": "Miss Katonic"
+		},
+		{
+			"id": 900,
+			"string": "Hanami"
+		},
+		{
+			"id": 901,
+			"string": "Baldi"
+		},
+		{
+			"id": 902,
+			"string": "Power Hanami"
+		},
+		{
+			"id": 903,
+			"string": "Power Baldi"
+		},
+		{
+			"id": 1000,
+			"string": "Marie"
+		},
+		{
+			"id": 1001,
+			"string": "Loo"
+		},
+		{
+			"id": 1002,
+			"string": "Kuncun"
+		},
+		{
+			"id": 1003,
+			"string": "Cocomin"
+		},
+		{
+			"id": 10001,
+			"string": "Exhausted"
+		},
+		{
+			"id": 10002,
+			"string": "Tired"
+		},
+		{
+			"id": 10003,
+			"string": "Neutral"
+		},
+		{
+			"id": 10004,
+			"string": "Healthy"
+		},
+		{
+			"id": 20001,
+			"string": "Promote"
+		},
+		{
+			"id": 20002,
+			"string": "Train"
+		},
+		{
+			"id": 20003,
+			"string": "Combine"
+		},
+		{
+			"id": 20004,
+			"string": "Evolve"
+		},
+		{
+			"id": 20005,
+			"string": "Grow"
+		},
+		{
+			"id": 20011,
+			"string": "Promote"
+		},
+		{
+			"id": 20012,
+			"string": "Train"
+		},
+		{
+			"id": 20013,
+			"string": "Combine"
+		},
+		{
+			"id": 20014,
+			"string": "Evolve"
+		},
+		{
+			"id": 20015,
+			"string": "Grow"
+		},
+		{
+			"id": 20016,
+			"string": "Return"
+		},
+		{
+			"id": 200,
+			"string": "Chicken Dinner Dakuryon"
+		},
+		{
+			"id": 201,
+			"string": "PlayerUnknown's Power Popori"
+		},
+		{
+			"id": 202,
+			"string": "PlayerUnknown's Popori"
+		}
+	]
+}

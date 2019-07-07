@@ -15,7 +15,7 @@ Customize your pet's appearance
 - Outputs a list of available pet presets
 ### `pet set [preset_name]`
 - Set your pet from a preset. (Example: `pet set felicity` will make your pet into a white cat with a flower on its head!)
-### `pet setid [huntingZoneId][templateId]`
+### `pet setid [huntingZoneId] [templateId]`
 - Set your pet from any NPC model. You need to know the templateId and huntingZoneId though. (eg `pet set id 983 950` to summon goddess Velik herself from the very heavens)
 ### `pet save`
 - Saves current pet configuration into a per-character savefile which would get loaded next time you login onto this character
@@ -35,8 +35,23 @@ Customize your pet's appearance
 ```
 ### `pet stay [degrees] [distance]`
 - Set pet to stay near you at [distance] units away at [degrees] degrees (eg `90` degrees - is at right, `-90` is at left, `180` is in the back)
+### `pet play [animation]`
+- Plays a custom animation on the pet (eg `pet play death`), animations are listed in the DataCenter files
+### `pet anim [animation] [newAnimation] [loopDuration]`
+- Set a pet to play custom animation instead of existing ones (eg `pet anim run walk 988` to set a new running animation to be the same as walking one with the repeat loop timing of 998 milliseconds), [loopDuration] argument is only needed for `run` and `walk` animations list of replacable animations:  
+```
+jump
+spawn
+death		(when pet disappears)
+skill		(when pet uses his power buff skill on you)
+unarmedwait	(pose for when custom run or walk animations should end too soon)
+walk		(partners are unable to walk unless you set them this custom animation)
+run			(non-partner pets can only use walk animation unless you set them this custom animation)
+```
+
 
 ## Presets
+Note: Only monsters have collision hitboxes
 
 | Partners | Rare Pets      | Critters | Usual Pets | Monsters     |
 |:---------|:---------------|:---------|:-----------|:-------------|
@@ -45,14 +60,18 @@ Customize your pet's appearance
 | Kuncun   | Cat            | Dog      | Juicy      | Mewy         |
 | Cocomin  | Hanami         | Goat     | Candy      | Dahlia       |
 |          | Baldi          | Pig      | Prince     | Pumpkin      |
-|          | Durion         | Rooster  |            | Okami        |
+|          | Durion         | Rooster  |            | Bandersnatch |
 |          | Sheep          | Pidgeon  |            | Lilith       |
-|          | Felicity       |          |            | Bahaar       |
-|          | Moon Bunny     |          |            | Imperator    |
+|          | Felicity       | Mystel   |            | Bahaar       |
+|          | Moon Bunny     | Okami    |            | Imperator    |
 |          | Miss Katonic   |          |            | Darkan       |
 |          |                |          |            | Kylos        |
-|          |                |          |            | Mystel       |
 |          |                |          |            | Lizard       |
-|          |                |          |            | Bandersnatch |
+|          |                |          |            |              |
+|          |                |          |            |              |
 
 <img src=http://u.cubeupload.com/Owyn/petspreview.jpg>
+
+
+## Changelog:
+- 07.07.19: added custom animations, also added those into `Bahaar`, `Lilith` and `Okami` (wandering god Halrath) presets (reload the preset via eg `pet set Okami`), please enjoy those, and say if you have a favorite pet model you'd want animations for in issues (animations are listed inside `AnimationData.json` DC file)

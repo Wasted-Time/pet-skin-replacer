@@ -8,7 +8,8 @@ const default_settings = {templateId: 0,
 					size: 0,
 					move: 0,
 					stay: [],
-					name: ""}
+					name: "",
+					anim: {} }
 
 module.exports = function PetReplacer(mod) {
     const command = mod.command;
@@ -18,11 +19,12 @@ module.exports = function PetReplacer(mod) {
 		settingsFileName = "",
 		petId = 0n,
 		myId = 0n,
+		myLoc = {},
 		pWalkSpeed = 0,
 		pRunSpeed = 0,
 		pIsWalking = 0,
 		timer = null,
-		prevAngle = null,
+		prevAngle = 0,
 		prevType = 0,
 		PetActualAngle = 0,
 		settings = {};
@@ -35,14 +37,23 @@ module.exports = function PetReplacer(mod) {
 		if(settings.huntingZoneId) {event.linkedNpcHuntingZoneId = settings.huntingZoneId;}
 		if(settings.name) {event.name = settings.name;}
 		if(settings.size) {setTimeout(setSize, 10);}
+		setTimeout(playAnim, 500, "spawn");
 		if(!hooks.length)
 		{
 			if(settings.stay.length)
 			{
+				event.walkSpeed = pWalkSpeed;
+				event.runSpeed = pRunSpeed;
 				hook('S_NPC_LOCATION', 3, {order: 9999}, (ev) => {
 					if (ev.gameId === petId) return false;
 				});
+				hook('S_SOCIAL', 1, {order: 9999}, (ev) => {
+					if (event.target === petId) return false;
+				});
 				PetActualAngle = settings.stay[0];
+				prevAngle = event.w;
+				event.loc = calc_pos(event.loc, event.w, PetActualAngle, settings.stay[1]);
+				event.loc.z += 90;
 				hook('C_PLAYER_LOCATION', 5, {order: 9999, filter: {fake: null}}, moveAlongHook);
 				hook('C_START_TARGETED_SKILL', 6, {order: 9999, filter: {fake: null}}, moveAlongHook);
 				hook('S_ACTION_STAGE', 9, {order: 9999, filter: {fake: null}}, moveAlongHook);
@@ -52,13 +63,22 @@ module.exports = function PetReplacer(mod) {
 					moveAlongHook(ev);
 				});
 			}
-			else if (settings.move)
+			else
 			{
-				hook('S_NPC_LOCATION', 3, {order: 9999}, (ev) => {
+				if (settings.move)
+				{
+					hook('S_NPC_LOCATION', 3, {order: 9999}, (ev) => {
+						if (ev.gameId === petId)
+						{
+							ev.type = settings.move;
+							return true;
+						}
+					});
+				}
+				hook('S_INSTANCE_ARROW', 3, {order: 9999}, (ev) => {
 					if (ev.gameId === petId)
 					{
-						ev.type = settings.move;
-						return true;
+						if(settings.anim.skill !== undefined){ mod.setTimeout(playAnimRaw, 300, settings.anim.skill); }
 					}
 				});
 			}
@@ -68,21 +88,27 @@ module.exports = function PetReplacer(mod) {
 	
 	function moveAlongHook(ev)
 	{
-		if(ev.gameId)
+		switch(ev.gameId)
 		{
-			switch(ev.gameId)
-			{
-				case myId:
-					break;
-				case petId:
-					ev.loc = calc_pos(ev.loc, ev.w, PetActualAngle, settings.stay[1]);
+			case undefined:
+			case myId:
+				break;
+			case petId:
+				if(ev.stage !== undefined)
+				{
+					if(settings.anim.skill !== undefined){ mod.setTimeout(playAnimRaw, 300, settings.anim.skill); }
+					ev.w = prevAngle - (PetActualAngle * Math.PI / 180);
+				}
+				else
+				{
 					ev.w = prevAngle;
-					return true;
-				default:
-					return;
-			}
+				}
+				ev.loc = calc_pos(myLoc, prevAngle, PetActualAngle, settings.stay[1]);
+				return true;
+			default:
+				return;
 		}
-		
+		myLoc = ev.loc;
 		if(!ev.dest || !ev.dest.x) return;
 		
 		let jumpInPlace = false;
@@ -107,7 +133,7 @@ module.exports = function PetReplacer(mod) {
 		}
 		let Speed = (jumpInPlace ? 0 : (pIsWalking ? pWalkSpeed : pRunSpeed));
 		if(ev.stage === 0) { Speed = 800; } // leaping strike no bump now
-		let AngleDif = (prevAngle !== null) ? radians_to_degrees(DeltaAngle(prevAngle, ev.w)) : 0;
+		let AngleDif = radians_to_degrees(DeltaAngle(prevAngle, ev.w));
 		let prevStep = PetActualAngle;
 		PetActualAngle = sub_degrees(PetActualAngle, AngleDif);
 		let PetCorrectionStep = (sub_degrees(settings.stay[0], PetActualAngle) > 0) ? -15 : 15;
@@ -115,12 +141,13 @@ module.exports = function PetReplacer(mod) {
 		if(Math.abs(sub_degrees(settings.stay[0], nextStep)) > Math.abs(PetCorrectionStep))
 		{
 			PetActualAngle = nextStep;
-			if(!ev.afk) { Speed+=40; clearTimeout(timer); timer = mod.setTimeout(hasPlayerStopped, 1000, ev); }
+			if(!ev.afk) { Speed+=30; clearTimeout(timer); timer = mod.setTimeout(hasPlayerStopped, 1700, ev); }
 		}
 		else
 		{
 			PetActualAngle = settings.stay[0];
 			clearTimeout(timer);
+			if(ev.afk) { timer = mod.setTimeout(StopMoveAnim, 1000); }
 		}
 		mod.send('S_NPC_LOCATION', 3, {
 			gameId: petId,
@@ -130,15 +157,62 @@ module.exports = function PetReplacer(mod) {
 			loc: calc_pos(ev.loc, ev.w, prevStep, settings.stay[1]),
 			dest: calc_pos(ev.dest, ev.w, PetActualAngle, settings.stay[1])
 		});
+		playWalkAnim(ev.type);
 		prevAngle = ev.w;
 		//SpawnThing(ev.loc, ev.w, prevStep, settings.stay[1], "FROM");
 		//SpawnThing(ev.dest, ev.w, PetActualAngle, settings.stay[1], "TO");
 	}
 	
+	let stoppingTimer;
+	function playWalkAnim(movetype)
+	{
+		clearTimeout(stoppingTimer);
+		switch(movetype)
+		{
+			case 9:
+			case 7: // stopping
+				if(animLoopTimer) { stoppingTimer = mod.setTimeout(StopMoveAnim, 150); }
+				break;
+			case 0:
+				if(settings.anim.run !== undefined) { playRunWalkLoop(settings.anim.run[0], settings.anim.run[1]); }
+				break;
+			case 1:
+				if(settings.anim.walk !== undefined) { playRunWalkLoop(settings.anim.walk[0], settings.anim.walk[1]); }
+				break;
+			case 5: // custom animations
+				if(settings.anim.jump !== undefined){ mod.setTimeout(playAnimRaw, 30, settings.anim.jump); }
+				break;
+			default: // rest should work
+				break;
+		}
+	}
+	
+	let animLoopTimer = null;
+	function playRunWalkLoop(anim, animDuration)
+	{
+		if(animLoopTimer === null)
+		{
+			mod.setTimeout(playAnimRaw, 30, anim);
+			animLoopTimer = mod.setInterval(playAnimRaw, animDuration, anim);
+		}
+	}
+	
+	function StopMoveAnim()
+	{
+		if(animLoopTimer !== null)
+		{
+			clearInterval(animLoopTimer);
+			animLoopTimer = null;
+			playAnim("unarmedwait");
+		}
+	}
+	
 	function hasPlayerStopped(ev)
 	{
 		ev.afk = true;
+		ev.type = pIsWalking ? 1 : 0; // for custom run walk animations
 		ev.loc = ev.dest; // fix for long-range movement skills
+		if(!(prevType === 5 && ev.type === 7)) { ev.dest.z -= 85; }
 		timer = mod.setInterval(moveAlongHook, 100, ev); //ok so I've just made it super-fast cuz this lil shit wont run ani
 	}
 	
@@ -178,8 +252,11 @@ module.exports = function PetReplacer(mod) {
 	 mod.hook('S_REQUEST_DESPAWN_SERVANT', 1, (event) => {
         if (event.gameId === petId)
 		{
-			petId = 0n;
 			unload();
+			playAnim("death");
+			petId = 0n;
+			//setTimeout(function() { mod.send('S_REQUEST_DESPAWN_SERVANT', 1, event); }, 1500);
+			//return false;
 		}
     });
 	
@@ -223,6 +300,21 @@ module.exports = function PetReplacer(mod) {
 				gameId: petId,
 				scale: settings.size,
 				duration: 0
+		});
+	}
+	
+	function playAnim(arg)
+	{
+		settings.anim[arg] ? playAnimRaw(settings.anim[arg]) : playAnimRaw(arg)
+	}
+	
+	function playAnimRaw(arg)
+	{
+		//command.message("playing " + arg);
+		mod.send('S_PLAY_ANIMATION', 1, {
+			gameId: petId,
+			rate: 1,
+			animName: arg
 		});
 	}
 	
@@ -276,6 +368,7 @@ module.exports = function PetReplacer(mod) {
 	mod.hook('S_LOGIN', 13, e=> {
 			settingsFileName = `./saves/${e.name}-${e.serverId}.json`;
 			settings = loadJson();
+			if(settings.anim === undefined) { settings.anim = {} }; // settings migrator
 			myId = e.gameId;
 	});
     
@@ -337,12 +430,13 @@ module.exports = function PetReplacer(mod) {
 			}
 			else
 			{
+				unload();
 				settings.stay = [];
-				command.message("pet wont stay near you from now now (default)");
+				command.message("pet wont stay near you from now on (default)");
 			}
 		},
-		set(arg) {
-			arg = arg.toLowerCase();
+		set(...arg) {
+			arg = arg.join(" ").toLowerCase();
 			for (let i = 0; i < pets_presets.pets.length; i++) {
 				if (pets_presets.pets[i].name == arg) {
 					settings.templateId = pets_presets.pets[i].templateId;
@@ -350,6 +444,7 @@ module.exports = function PetReplacer(mod) {
 					settings.size = pets_presets.pets[i].size || 0;
 					settings.stay = pets_presets.pets[i].stay || settings.stay;
 					settings.move = pets_presets.pets[i].move || settings.move;
+					settings.anim = pets_presets.pets[i].anim || settings.anim;
 					command.message('Pet set to \'' + arg[0].toUpperCase() + arg.slice(1) + '\'');
 					return;
 				}
@@ -368,6 +463,48 @@ module.exports = function PetReplacer(mod) {
 				settings.huntingZoneId = 0;
 				settings.templateId = 0;
 				command.message('huntingZoneId set to default (no replace)');
+			}
+		},
+		anim(arg1, arg2, arg3) {
+			if(arg1)
+			{
+				arg1 = arg1.toLowerCase();
+				if(arg2)
+				{
+					if(arg3)
+					{
+						if(arg1 === "run" || arg1 === "walk")
+						{
+							settings.anim[arg1] = [arg2, Number(arg3)];
+							command.message('animation '+ arg1 +' set to \'' + arg2 + '\' with loop length of ' + arg3);
+						}
+						else
+						{
+							command.message('you can only set \'run\' or \'walk\' animation\'s loop length');
+						}
+					}
+					else
+					{
+						settings.anim[arg1] = arg2;
+						command.message('animation \''+ arg1 +'\' set to \'' + arg2 + '\'');
+					}
+				}
+				else if (arg1 === "clear")
+				{
+					settings.anim = {};
+					command.message('custom animations cleared');
+				}
+			}
+			else
+			{
+				command.message('current custom animations: \n' + JSON.stringify(settings.anim));
+			}
+		},
+		play(arg) {
+			if(arg)
+			{
+				command.message("Playing animation " + arg);
+				playAnim(arg);
 			}
 		},
 		save() {
