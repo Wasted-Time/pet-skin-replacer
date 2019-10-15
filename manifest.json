@@ -1,7 +1,7 @@
 {
 	"files": {
 		"README.MD": "838311a24ea23befdad3fcf755dc162cef3b18088b5827bc9ca3c09120faaaee",
-		"index.js": "6b585044b2f1066e08818c179857d106b9c44696a910f10d5152966bc5110f5d",
+		"index.js": "b203186c39202a117fc71d7c084a50352f5c0b98030f58ee4e667b31084e58fc",
 		"module.json": "cf3cf7ad5a9336883ccb5d3d92dc21c7b05d80c01c32da9db6ef6cf6da991ca5",
 		"pet_presets.json": "c6233520743b8bae6fea59ff1d9d6f9c9164d7f1a2597952d3c4a0a97ecf4eed"
 	},
@@ -13,7 +13,7 @@
 		"S_ACTION_STAGE": 9,
 		"S_INSTANCE_ARROW": 3,
 		"S_INSTANT_DASH": 3,
-		"S_LOGIN": 13,
+		"S_LOGIN": [13,14],
 		"S_NPC_LOCATION": 3,
 		"S_PLAYER_STAT_UPDATE": 12,
 		"S_PLAY_ANIMATION": 1,

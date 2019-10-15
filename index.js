@@ -365,7 +365,7 @@ module.exports = function PetReplacer(mod) {
 		fs.mkdirSync(path.join(__dirname, './saves'));
 	}
 	
-	mod.hook('S_LOGIN', 13, e=> {
+	mod.hook('S_LOGIN', mod.majorPatchVersion >= 86 ? 14 : 13, e=> {
 			settingsFileName = `./saves/${e.name}-${e.serverId}.json`;
 			settings = loadJson();
 			if(settings.anim === undefined) { settings.anim = {} }; // settings migrator
