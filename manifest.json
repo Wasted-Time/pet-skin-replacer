@@ -1,7 +1,7 @@
 {
 	"files": {
 		"README.MD": "838311a24ea23befdad3fcf755dc162cef3b18088b5827bc9ca3c09120faaaee",
-		"index.js": "b203186c39202a117fc71d7c084a50352f5c0b98030f58ee4e667b31084e58fc",
+		"index.js": "1b025667db7ed80864ca636932095758f4ae0cf9af3be0ba7a5ddd15af008753",
 		"module.json": "cf3cf7ad5a9336883ccb5d3d92dc21c7b05d80c01c32da9db6ef6cf6da991ca5",
 		"pet_presets.json": "c6233520743b8bae6fea59ff1d9d6f9c9164d7f1a2597952d3c4a0a97ecf4eed"
 	},
@@ -18,7 +18,7 @@
 		"S_PLAYER_STAT_UPDATE": 12,
 		"S_PLAY_ANIMATION": 1,
 		"S_REQUEST_DESPAWN_SERVANT": 1,
-		"S_REQUEST_SPAWN_SERVANT": 1,
+		"S_REQUEST_SPAWN_SERVANT": 3,
 		"S_SOCIAL": 1
 	}
 }

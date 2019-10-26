@@ -29,7 +29,7 @@ module.exports = function PetReplacer(mod) {
 		PetActualAngle = 0,
 		settings = {};
          
-    mod.hook('S_REQUEST_SPAWN_SERVANT', 1, {order: 9999}, (event) => {
+    mod.hook('S_REQUEST_SPAWN_SERVANT', 3, {order: 9999}, (event) => {
         if (!enabled || event.ownerId !== myId) return;
 		
 		petId = event.gameId;
