@@ -75,7 +75,7 @@ module.exports = function PetReplacer(mod) {
 						}
 					});
 				}
-				hook('S_INSTANCE_ARROW', 3, {order: 9999}, (ev) => {
+				hook('S_INSTANCE_ARROW', 4, {order: 9999}, (ev) => {
 					if (ev.gameId === petId)
 					{
 						if(settings.anim.skill !== undefined){ mod.setTimeout(playAnimRaw, 300, settings.anim.skill); }
@@ -260,7 +260,7 @@ module.exports = function PetReplacer(mod) {
 		}
     });
 	
-	mod.hook('S_PLAYER_STAT_UPDATE', 12, {order: 9999}, (ev) => {
+	mod.hook('S_PLAYER_STAT_UPDATE', 13, {order: 9999}, (ev) => {
 			pWalkSpeed = ev.walkSpeed + ev.walkSpeedBonus;
 			pRunSpeed = ev.runSpeed + ev.runSpeedBonus;
 		});
