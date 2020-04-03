@@ -4,28 +4,28 @@
 Customize your pet's appearance
 
 ## Info
-- Creatures not used as pets normally have collision, to avoid bumping into them in combat use `pet stay` option (then even using Leaping Strike right into pet's face won't hinder your movement)   
+- Creatures not used as pets normally have collision, to avoid bumping into them in combat use `pets stay` option (then even using Leaping Strike right into pet's face won't hinder your movement)   
 - Feel free to use info in `DC` folder to find more `huntingZoneId` and `templateId` to set from any existing creatures out there  
 - Module is client-side only, that means only you can see the difference. Nobody else can see your new pet.	
 
 ## Usage
-### `pet`
+### `pets`
 - Toggle on/off
-### `pet ?`
+### `pets ?`
 - Outputs a list of available pet presets
-### `pet set [preset_name]`
-- Set your pet from a preset. (Example: `pet set felicity` will make your pet into a white cat with a flower on its head!)
-### `pet setid [huntingZoneId] [templateId]`
-- Set your pet from any NPC model. You need to know the templateId and huntingZoneId though. (eg `pet set id 983 950` to summon goddess Velik herself from the very heavens)
-### `pet save`
+### `pets set [preset_name]`
+- Set your pet from a preset. (Example: `pets set felicity` will make your pet into a white cat with a flower on its head!)
+### `pets setid [huntingZoneId] [templateId]`
+- Set your pet from any NPC model. You need to know the templateId and huntingZoneId though. (eg `pets set id 983 950` to summon goddess Velik herself from the very heavens)
+### `pets save`
 - Saves current pet configuration into a per-character savefile which would get loaded next time you login onto this character
-### `pet reload`
+### `pets reload`
 - Reloads current pet configuration from a per-character savefile (or resets to default if it doesn't exist)
-### `pet size [size]`
-- Sets pet size (eg `pet size 1.5` to make it 50% bigger or `0.1` to make it 10x times smaller)
-### `pet name [name]`
+### `pets size [size]`
+- Sets pet size (eg `pets size 1.5` to make it 50% bigger or `0.1` to make it 10x times smaller)
+### `pets name [name]`
 - Sets pet name to one specified
-### `pet move [number]`
+### `pets move [number]`
 - Set movement type for your pet (some NPCs and monsters might have multiple types of animations you can choose from):
 ```
 -1 = copy players movetype (eg jump when you jump etc) (works only with "pet stay" option enabled),
@@ -36,9 +36,9 @@ Customize your pet's appearance
 ### `pet stay [degrees] [distance]`
 - Set pet to stay near you at [distance] units away at [degrees] degrees (eg `90` degrees - is at right, `-90` is at left, `180` is in the back)
 ### `pet play [animation]`
-- Plays a custom animation on the pet (eg `pet play death`), animations are listed in the DataCenter files
+- Plays a custom animation on the pet (eg `pets play death`), animations are listed in the DataCenter files
 ### `pet anim [animation] [newAnimation] [loopDuration]`
-- Set a pet to play custom animation instead of existing ones (eg `pet anim run walk 988` to set a new running animation to be the same as walking one with the repeat loop timing of 998 milliseconds), [loopDuration] argument is only needed for `run` and `walk` animations list of replacable animations:  
+- Set a pet to play custom animation instead of existing ones (eg `pets anim run walk 988` to set a new running animation to be the same as walking one with the repeat loop timing of 998 milliseconds), [loopDuration] argument is only needed for `run` and `walk` animations list of replacable animations:  
 ```
 jump
 spawn
@@ -74,4 +74,4 @@ Note: Only monsters have collision hitboxes
 
 
 ## Changelog:
-- 07.07.19: added custom animations, also added those into `Bahaar`, `Lilith` and `Okami` (wandering god Halrath) presets (reload the preset via eg `pet set Okami`), please enjoy those, and say if you have a favorite pet model you'd want animations for in issues (animations are listed inside `AnimationData.json` DC file)
+- 07.07.19: added custom animations, also added those into `Bahaar`, `Lilith` and `Okami` (wandering god Halrath) presets (reload the preset via eg `pets set Okami`), please enjoy those, and say if you have a favorite pet model you'd want animations for in issues (animations are listed inside `AnimationData.json` DC file)

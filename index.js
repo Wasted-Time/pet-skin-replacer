@@ -372,7 +372,7 @@ module.exports = function PetReplacer(mod) {
 			myId = e.gameId;
 	});
     
-	command.add(['pet', '!pet'], {
+	command.add(['pets', '!pets'], {
         $none() {
             enabled = !enabled;
 			command.message((enabled ? 'Enabled' : 'Disabled'));
