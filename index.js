@@ -29,7 +29,7 @@ module.exports = function PetReplacer(mod) {
 		PetActualAngle = 0,
 		settings = {};
          
-    mod.hook('S_REQUEST_SPAWN_SERVANT', 3, {order: 9999}, (event) => {
+    mod.hook('S_REQUEST_SPAWN_SERVANT', 4, {order: 9999}, (event) => {
         if (!enabled || event.ownerId !== myId) return;
 		
 		petId = event.gameId;
@@ -55,7 +55,7 @@ module.exports = function PetReplacer(mod) {
 				event.loc = calc_pos(event.loc, event.w, PetActualAngle, settings.stay[1]);
 				event.loc.z += 90;
 				hook('C_PLAYER_LOCATION', 5, {order: 9999, filter: {fake: null}}, moveAlongHook);
-				hook('C_START_TARGETED_SKILL', 6, {order: 9999, filter: {fake: null}}, moveAlongHook);
+				hook('C_START_TARGETED_SKILL', 7, {order: 9999, filter: {fake: null}}, moveAlongHook);
 				hook('S_ACTION_STAGE', 9, {order: 9999, filter: {fake: null}}, moveAlongHook);
 				hook('S_ACTION_END', 5, {order: 9999, filter: {fake: null}}, moveAlongHook);
 				hook('S_INSTANT_DASH', 3, {order: 9999, filter: {fake: null}}, (ev) => {
