@@ -1,11 +1,12 @@
 {
-	"disableAutoUpdate": false,
+	"disableAutoUpdate": true,
 	"name": "Pet-Skin-Replacer",
-	"author": "Owyn, PsykoDev",
+	"author": "Owyn, PsykoDev, Wasted-Time",
 	"description": "Customize your pet's appearance",
 	"options": {
 		"niceName": "Pet Skin Replacer"
 	},
 	"servers": ["https://raw.githubusercontent.com/PsykoDev/pet-skin-replacer/master/"],
 	"supportUrl": "https://github.com/PsykoDev/pet-skin-replacer/issues"
+	"supportUrl": "https://github.com/Wasted-Time/Wasted-Time/issues"
 }
